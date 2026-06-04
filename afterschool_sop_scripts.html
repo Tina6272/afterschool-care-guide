@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>課後照顧班：話術與SOP完整手冊</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; background: #f8f7f4; color: #2c2c2a; font-size: 15px; line-height: 1.7; }
+  
+  header { background: #2c2c2a; color: #f8f7f4; padding: 2rem 2rem 1.5rem; }
+  header h1 { font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+  header p { font-size: 13px; color: #b4b2a9; }
+
+  .nav-wrap { background: #fff; border-bottom: 1px solid #e0ded8; position: sticky; top: 0; z-index: 100; }
+  .nav { display: flex; overflow-x: auto; padding: 0 1.5rem; gap: 0; }
+  .nav-btn { padding: 14px 18px; font-size: 13px; font-weight: 500; border: none; background: none; cursor: pointer; color: #888780; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.15s; }
+  .nav-btn.active { color: #2c2c2a; border-bottom-color: #2c2c2a; }
+  .nav-btn:hover:not(.active) { color: #5f5e5a; }
+
+  .content { display: none; padding: 2rem 1.5rem; max-width: 960px; margin: 0 auto; }
+  .content.active { display: block; }
+
+  h2 { font-size: 18px; font-weight: 500; margin-bottom: 1.5rem; padding-bottom: 8px; border-bottom: 1px solid #e0ded8; }
+  h3 { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+
+  .scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 2rem; }
+  .scenario-card { background: #fff; border: 1px solid #e0ded8; border-radius: 12px; overflow: hidden; }
+  .scenario-header { padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+  .scenario-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .scenario-header h3 { margin: 0; font-size: 14px; }
+  .scenario-header .sub { font-size: 12px; color: #888780; }
+  .scenario-body { padding: 0 16px 16px; }
+
+  .tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; margin-bottom: 10px; }
+
+  .sop-step { display: flex; gap: 12px; margin-bottom: 12px; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .step-detail { font-size: 12px; color: #5f5e5a; line-height: 1.6; }
+
+  .script-box { background: #f8f7f4; border-left: 3px solid #d3d1c7; border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 8px 0; }
+  .script-label { font-size: 11px; font-weight: 500; color: #888780; margin-bottom: 4px; letter-spacing: 0.04em; }
+  .script-text { font-size: 13px; color: #2c2c2a; line-height: 1.6; }
+  .script-text em { color: #888780; font-style: normal; }
+
+  .script-good { border-left-color: #1D9E75; background: #f0faf6; }
+  .script-good .script-label { color: #0F6E56; }
+  .script-bad { border-left-color: #D85A30; background: #fdf4f0; }
+  .script-bad .script-label { color: #993C1D; }
+  .script-neutral { border-left-color: #378ADD; background: #f0f6fd; }
+  .script-neutral .script-label { color: #185FA5; }
+
+  .warn { background: #faeeda; border: 1px solid #EF9F27; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #633806; margin-top: 12px; }
+  .info { background: #e6f1fb; border: 1px solid #85B7EB; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #042C53; margin-top: 12px; }
+  .danger { background: #fcebeb; border: 1px solid #F09595; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #501313; margin-top: 12px; }
+
+  .sop-flow { background: #fff; border: 1px solid #e0ded8; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; }
+  .sop-flow h3 { color: #2c2c2a; font-size: 14px; margin-bottom: 14px; }
+  .flow-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; position: relative; }
+  .flow-row:not(:last-child)::after { content: ''; position: absolute; left: 16px; top: 36px; width: 1px; height: calc(100% - 4px); background: #e0ded8; }
+  .flow-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; position: relative; z-index: 1; }
+  .flow-text { flex: 1; padding-top: 5px; }
+  .flow-text strong { font-size: 13px; font-weight: 500; display: block; margin-bottom: 2px; }
+  .flow-text span { font-size: 12px; color: #5f5e5a; }
+
+  .special-section { margin-bottom: 2rem; }
+  .special-header { display: flex; align-items: center; gap: 12px; padding: 16px; background: #fff; border: 1px solid #e0ded8; border-radius: 12px 12px 0 0; border-bottom: none; }
+  .special-badge { font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; }
+  .special-body { background: #fff; border: 1px solid #e0ded8; border-radius: 0 0 12px 12px; padding: 16px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .scenario-grid { grid-template-columns: 1fr; } }
+
+  .divider { height: 1px; background: #e0ded8; margin: 1.5rem 0; }
+
+  .phase-row { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid #e0ded8; border-radius: 10px; overflow: hidden; }
+  .phase-col { flex: 1; padding: 14px; border-right: 1px solid #e0ded8; }
+  .phase-col:last-child { border-right: none; }
+  .phase-col h4 { font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+  .phase-col p { font-size: 12px; color: #5f5e5a; line-height: 1.6; }
+  .phase-rising { background: #fdf4f0; }
+  .phase-rising h4 { color: #D85A30; }
+  .phase-peak { background: #fcebeb; }
+  .phase-peak h4 { color: #A32D2D; }
+  .phase-down { background: #f0faf6; }
+  .phase-down h4 { color: #0F6E56; }
+  @media (max-width: 600px) { .phase-row { flex-direction: column; } .phase-col { border-right: none; border-bottom: 1px solid #e0ded8; } .phase-col:last-child { border-bottom: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>課後照顧班：具體話術與SOP流程完整手冊</h1>
+  <p>整合特教實務、正向行為支持與情緒緩降策略，供課後照顧班教師現場參考使用</p>
+</header>
+
+<div class="nav-wrap">
+  <div class="nav">
+    <button class="nav-btn active" onclick="show('general')">普通生情境</button>
+    <button class="nav-btn" onclick="show('emotion')">情緒爆發SOP</button>
+    <button class="nav-btn" onclick="show('asd')">自閉症（ASD）</button>
+    <button class="nav-btn" onclick="show('as')">亞斯伯格（AS）</button>
+    <button class="nav-btn" onclick="show('adhd')">ADHD</button>
+    <button class="nav-btn" onclick="show('ebd')">情緒行為障礙</button>
+    <button class="nav-btn" onclick="show('ld')">學習障礙</button>
+    <button class="nav-btn" onclick="show('crisis')">危機通報SOP</button>
+  </div>
+</div>
+
+<!-- 普通生情境 -->
+<div class="content active" id="page-general">
+  <h2>普通生常見情境：具體話術與應對流程</h2>
+
+  <div class="scenario-grid">
+
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:#f0faf6">
+        <div class="scenario-icon" style="background:#1D9E75;color:#fff">📝</div>
+        <div><h3>情境一：不願意寫作業</h3><div class="sub">最常見，原因多樣</div></div>
+      </div>
+      <div class="scenario-body">
+        <div class="sop-step">
+          <div class="step-num" style="background:#c0dd97;color:#27500A">1</div>
+          <div class="step-content">
+            <div class="step-title">先觀察，不立即施壓</div>
+            <div class="step-detail">給孩子1至2分鐘，觀察是真的不知如何開始，還是在發呆、玩東西</div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#c0dd97;color:#27500A">2</div>
+          <div class="step-content">
+            <div class="step-title">靠近輕聲詢問</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「你今天有幾樣作業？我們來看一下，先從最簡單的開始，好嗎？」</div>
+            </div>
+            <div class="script-box script-bad">
+              <div class="script-label">✗ 避免說法</div>
+              <div class="script-text">「你為什麼還沒開始寫？」「大家都在寫了，只有你沒寫！」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#c0dd97;color:#27500A">3</div>
+          <div class="step-content">
+            <div class="step-title">五分鐘啟動法</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「我們只要先寫五分鐘就好，不用全部。你寫，老師也在旁邊陪你。」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#c0dd97;color:#27500A">4</div>
+          <div class="step-content">
+            <div class="step-title">仍不動筆：了解原因</div>
+            <div class="script-box script-neutral">
+              <div class="script-label">→ 進一步詢問</div>
+              <div class="script-text">「這題你不會嗎？還是你今天不想寫？告訴老師，我們一起想辦法。」</div>
+            </div>
+            <div class="step-detail" style="margin-top:6px">→ 不會：先做示範題；心情不好：同理後給彈性；若長期如此，記錄並告知導師</div>
+          </div>
+        </div>
+        <div class="warn">⚠ 若每天都不寫：填寫「作業輔導記錄表」，學期累積3次通知家長；持續5次通報導師協同處理。</div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:#e6f1fb">
+        <div class="scenario-icon" style="background:#378ADD;color:#fff">🤝</div>
+        <div><h3>情境二：同學衝突吵架</h3><div class="sub">打架、言語衝突、告狀</div></div>
+      </div>
+      <div class="scenario-body">
+        <div class="sop-step">
+          <div class="step-num" style="background:#B5D4F4;color:#042C53">1</div>
+          <div class="step-content">
+            <div class="step-title">立即分開，各自冷靜</div>
+            <div class="script-box script-neutral">
+              <div class="script-label">→ 立即說法（堅定但平靜）</div>
+              <div class="script-text">「先停下來。A，你先去那邊坐；B，你在這邊。我們等一下再說。」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#B5D4F4;color:#042C53">2</div>
+          <div class="step-content">
+            <div class="step-title">分別聆聽（不評判）</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 聆聽話術（對每個孩子分別說）</div>
+              <div class="script-text">「你說說看，剛才發生了什麼事？」<em>（只聽，不打斷，不說「但是」）</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#B5D4F4;color:#042C53">3</div>
+          <div class="step-content">
+            <div class="step-title">引導說出感受與需求</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「所以你當時是覺得__，才會__，對嗎？」<br>「你希望他怎麼做，你才會好過一點？」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#B5D4F4;color:#042C53">4</div>
+          <div class="step-content">
+            <div class="step-title">雙方和解確認</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「你們兩個都說清楚了。現在各說一句，下次要怎麼做？」</div>
+            </div>
+          </div>
+        </div>
+        <div class="info">📝 有肢體衝突（打人）必須填寫事件記錄並通知雙方家長，同時告知導師。</div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:#eeedfe">
+        <div class="scenario-icon" style="background:#534AB7;color:#fff">😔</div>
+        <div><h3>情境三：孩子悶悶不樂</h3><div class="sub">可能在家有狀況或在校受挫</div></div>
+      </div>
+      <div class="scenario-body">
+        <div class="sop-step">
+          <div class="step-num" style="background:#CECBF6;color:#26215C">1</div>
+          <div class="step-content">
+            <div class="step-title">輕聲靠近，不強迫說話</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「老師注意到你今天好像有點不開心，沒關係，不用現在說。如果想說的時候，老師在。」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#CECBF6;color:#26215C">2</div>
+          <div class="step-content">
+            <div class="step-title">給出口，不給壓力</div>
+            <div class="step-detail">在旁邊放張白紙，說：「你可以畫畫或寫下來，也不用給老師看。」</div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#CECBF6;color:#26215C">3</div>
+          <div class="step-content">
+            <div class="step-title">對作業有彈性</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「今天先寫你最有把握的那幾題，其他的回家再寫，好嗎？」</div>
+            </div>
+          </div>
+        </div>
+        <div class="danger">🚨 若孩子說出「不想活」「想消失」等字句：不要輕忽，立即冷靜回應：「謝謝你告訴我，我很擔心你。」並立即通知輔導老師，不得獨自評估或等待。</div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:#faeeda">
+        <div class="scenario-icon" style="background:#BA7517;color:#fff">🏃</div>
+        <div><h3>情境四：不遵守常規</h3><div class="sub">亂跑、大聲喧嘩、不聽指令</div></div>
+      </div>
+      <div class="scenario-body">
+        <div class="sop-step">
+          <div class="step-num" style="background:#FAC775;color:#412402">1</div>
+          <div class="step-content">
+            <div class="step-title">第一次：非語言提示</div>
+            <div class="step-detail">眼神接觸 + 手勢（請坐下）；不用語言打斷全班。</div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#FAC775;color:#412402">2</div>
+          <div class="step-content">
+            <div class="step-title">第二次：靠近輕聲提醒</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法（靠近，低聲）</div>
+              <div class="script-text">「○○，現在是寫作業的時間，請你先坐下來。」</div>
+            </div>
+            <div class="script-box script-bad">
+              <div class="script-label">✗ 避免說法</div>
+              <div class="script-text">「你是在搗蛋嗎？！怎麼那麼不懂事？！」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#FAC775;color:#412402">3</div>
+          <div class="step-content">
+            <div class="step-title">第三次：給予選擇</div>
+            <div class="script-box script-neutral">
+              <div class="script-label">→ 選擇話術</div>
+              <div class="script-text">「你可以選擇：現在坐下繼續寫，或是先去冷靜區坐五分鐘。你選哪個？」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#FAC775;color:#412402">4</div>
+          <div class="step-content">
+            <div class="step-title">事後私下對話</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「剛才發生什麼事了？你願意告訴老師嗎？」<em>（了解動機後調整策略）</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:#faece7">
+        <div class="scenario-icon" style="background:#D85A30;color:#fff">😢</div>
+        <div><h3>情境五：孩子哭泣</h3><div class="sub">委屈、被欺負、思念家人</div></div>
+      </div>
+      <div class="scenario-body">
+        <div class="sop-step">
+          <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">1</div>
+          <div class="step-content">
+            <div class="step-title">先讓孩子哭，不急著止哭</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「沒關係，想哭就哭，老師在這裡。」<em>（遞紙巾，靜靜陪著）</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">2</div>
+          <div class="step-content">
+            <div class="step-title">等情緒稍緩再問</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「你準備好說了嗎？告訴老師，是什麼讓你這麼難過？」</div>
+            </div>
+            <div class="script-box script-bad">
+              <div class="script-label">✗ 避免說法</div>
+              <div class="script-text">「不要哭了！這有什麼好哭的？」「趕快說，還要寫作業！」</div>
+            </div>
+          </div>
+        </div>
+        <div class="sop-step">
+          <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">3</div>
+          <div class="step-content">
+            <div class="step-title">反映感受，讓孩子感覺被懂</div>
+            <div class="script-box script-good">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「聽起來你很委屈，因為你覺得被誤會了，對嗎？這樣的感覺很難受。」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:#eaf3de">
+        <div class="scenario-icon" style="background:#639922;color:#fff">⭐</div>
+        <div><h3>情境六：正向回饋時機</h3><div class="sub">具體稱讚，建立動機</div></div>
+      </div>
+      <div class="scenario-body">
+        <div class="step-detail" style="margin-bottom:10px;font-size:13px;">稱讚要「具體」才有效，避免空泛的「你好棒！」</div>
+        <div class="script-box script-good">
+          <div class="script-label">✓ 具體稱讚範例</div>
+          <div class="script-text">「你今天數學那頁的直式，算得很整齊，步驟都對了！」<br>「我注意到你今天一進來就開始寫，沒有拖，這很不容易！」<br>「你把不會的題目打勾先跳過，這是很聰明的方法！」</div>
+        </div>
+        <div class="script-box script-bad">
+          <div class="script-label">✗ 避免空洞稱讚</div>
+          <div class="script-text">「你好棒！」「很好！」<em>（孩子不知道自己做對了什麼）</em></div>
+        </div>
+        <div class="info">💡 稱讚努力而非聰明：「你很認真算」比「你真聰明」更能建立成長型思維。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 情緒爆發SOP -->
+<div class="content" id="page-emotion">
+  <h2>情緒爆發三階段：SOP流程與話術</h2>
+
+  <div class="phase-row">
+    <div class="phase-col phase-rising">
+      <h4>🌡 前期：情緒上升期</h4>
+      <p>孩子開始出現焦慮、煩躁、言語增多或沉默。行為有跡可循，是介入最有效的時機。</p>
+    </div>
+    <div class="phase-col phase-peak">
+      <h4>🔥 中期：情緒高峰期</h4>
+      <p>完全失控、可能有攻擊行為或破壞物品。此時講道理無效，以確保安全為唯一目標。</p>
+    </div>
+    <div class="phase-col phase-down">
+      <h4>🌿 後期：情緒緩降期</h4>
+      <p>孩子開始從高峰退下，但未完全平靜。此時不宜立即要求善後，需觀察是否有第二波。</p>
+    </div>
+  </div>
+
+  <div class="sop-flow">
+    <h3>🔴 前期（上升期）：預防與穩住</h3>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">觀</div>
+      <div class="flow-text">
+        <strong>辨識早期訊號</strong>
+        <span>臉色改變、說話變尖銳、不回應老師、眼神飄移、開始跺腳或用筆敲桌</span>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">靠</div>
+      <div class="flow-text">
+        <strong>低調靠近，私下介入</strong>
+        <span>不要在全班面前點名，輕聲走近</span>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">說</div>
+      <div class="flow-text">
+        <strong>說話術：命名情緒 + 給出路</strong>
+        <div class="script-box script-good" style="margin-top:6px">
+          <div class="script-label">✓ 建議說法</div>
+          <div class="script-text">「老師看你現在好像有點煩，你可以告訴我發生什麼事嗎？」<br>「如果你需要休息一下，可以先去喝個水，沒關係。」</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">減</div>
+      <div class="flow-text">
+        <strong>降低刺激</strong>
+        <span>移除可能引發衝突的同學或物品；暫時減少對孩子的要求（先不要求寫作業）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sop-flow">
+    <h3>🔴 中期（高峰期）：安全第一</h3>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">安</div>
+      <div class="flow-text">
+        <strong>確保安全：疏散周圍同學</strong>
+        <div class="script-box script-neutral" style="margin-top:6px">
+          <div class="script-label">→ 對其他孩子說</div>
+          <div class="script-text">「同學們先安靜繼續寫作業，老師現在去幫那個同學。」<em>（平靜、不慌亂）</em></div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">冷</div>
+      <div class="flow-text">
+        <strong>老師自身保持冷靜</strong>
+        <span>降低音量（不要提高聲音），放慢語速，肢體保持開放（不交叉雙臂）</span>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">說</div>
+      <div class="flow-text">
+        <strong>此階段話術：只說一句</strong>
+        <div class="script-box script-good" style="margin-top:6px">
+          <div class="script-label">✓ 建議說法（重複即可，不要長篇）</div>
+          <div class="script-text">「老師在這裡，你是安全的。」<br>「深呼吸，我陪著你。」</div>
+        </div>
+        <div class="script-box script-bad" style="margin-top:6px">
+          <div class="script-label">✗ 此時絕對不說</div>
+          <div class="script-text">「你這樣很丟臉！」「你再這樣我就打電話給你爸媽！」「你為什麼要這樣？！」</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">報</div>
+      <div class="flow-text">
+        <strong>有攻擊行為：立即請求支援</strong>
+        <span>請其他人通報輔導組或教務處；課後班老師不需獨力處理肢體攻擊</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sop-flow">
+    <h3>🟢 後期（緩降期）：修復關係</h3>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">等</div>
+      <div class="flow-text">
+        <strong>等待30至60分鐘，讓孩子真正平靜</strong>
+        <span>高峰後不要立即要求道歉或善後，給孩子恢復的空間</span>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">連</div>
+      <div class="flow-text">
+        <strong>重新連結（不追究、先連結）</strong>
+        <div class="script-box script-good" style="margin-top:6px">
+          <div class="script-label">✓ 建議說法</div>
+          <div class="script-text">「你現在好一點了嗎？」<em>（等孩子回應）</em><br>「剛才很辛苦吧？你現在感覺怎樣？」</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">解</div>
+      <div class="flow-text">
+        <strong>引導說出感受與觸發點（不說教）</strong>
+        <div class="script-box script-good" style="margin-top:6px">
+          <div class="script-label">✓ 建議說法</div>
+          <div class="script-text">「你願意說說看，剛才是什麼讓你這麼難受嗎？」</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">善</div>
+      <div class="flow-text">
+        <strong>善後（若有影響他人）</strong>
+        <div class="script-box script-neutral" style="margin-top:6px">
+          <div class="script-label">→ 引導但不強迫</div>
+          <div class="script-text">「你覺得你剛才說的那句話有沒有傷到他？下次你想怎麼做？」</div>
+        </div>
+      </div>
+    </div>
+    <div class="warn">⚠ 必填記錄：情緒爆發事件需填寫「行為觀察記錄表」，記錄時間、觸發點、行為描述、介入方式，提供給導師與輔導組。</div>
+  </div>
+</div>
+
+<!-- ASD -->
+<div class="content" id="page-asd">
+  <h2>自閉症（ASD）：具體話術與SOP</h2>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#EEEDFE;color:#3C3489">情境一</div>
+      <h3>拒絕配合課後班常規（不肯坐定、堅持自己的方式）</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">SOP流程</h3>
+          <div class="sop-step">
+            <div class="step-num" style="background:#CECBF6;color:#26215C">1</div>
+            <div class="step-content"><div class="step-title">不當眾糾正，先靠近</div><div class="step-detail">ASD孩子對公開糾正極度敏感，先靠近再低聲引導</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#CECBF6;color:#26215C">2</div>
+            <div class="step-content"><div class="step-title">給具體指令，不給模糊要求</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#CECBF6;color:#26215C">3</div>
+            <div class="step-content"><div class="step-title">提供視覺化的選擇</div><div class="step-detail">手指著流程表：「現在是寫作業的時間（指圖），接下來是自由時間（指圖）。」</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#CECBF6;color:#26215C">4</div>
+            <div class="step-content"><div class="step-title">仍拒絕：給彈性緩衝</div><div class="step-detail">「你可以再給自己2分鐘，然後我們一起開始。」設計時器讓孩子看見倒數。</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">話術範例</h3>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 建議說法</div>
+            <div class="script-text">「○○，現在請把國語作業放在桌上，打開第幾頁，寫第幾題到第幾題。」<em>（具體、分步驟）</em></div>
+          </div>
+          <div class="script-box script-bad">
+            <div class="script-label">✗ 避免說法</div>
+            <div class="script-text">「你知道現在要做什麼嗎？」「大家都在寫，你也要寫啊！」</div>
+          </div>
+          <div class="script-box script-neutral">
+            <div class="script-label">→ 改變活動時的預告話術</div>
+            <div class="script-text">「還有5分鐘，作業時間就要結束了，準備要換自由時間囉。」<em>（提早預告）</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#EEEDFE;color:#3C3489">情境二</div>
+      <h3>情緒崩潰（Meltdown）：突然大哭大叫或倒地</h3>
+    </div>
+    <div class="special-body">
+      <div class="sop-flow" style="margin-bottom:0">
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#CECBF6;color:#26215C">1</div>
+          <div class="flow-text"><strong>不強制約束，移除觸發來源</strong><span>移開旁邊的同學，降低環境刺激（減少噪音、光線）</span></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#CECBF6;color:#26215C">2</div>
+          <div class="flow-text">
+            <strong>說最少的話，保持在場</strong>
+            <div class="script-box script-good" style="margin-top:6px">
+              <div class="script-label">✓ 建議說法（重複，聲音要低且慢）</div>
+              <div class="script-text">「老師在這裡，你是安全的。」<em>（不問原因，不講道理）</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#CECBF6;color:#26215C">3</div>
+          <div class="flow-text"><strong>等待：ASD Meltdown通常5至20分鐘自然消退</strong><span>不要催促、不要問「你好了嗎」，靜靜等待</span></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#CECBF6;color:#26215C">4</div>
+          <div class="flow-text"><strong>緩降後提供感官調節工具</strong><span>壓力球、毯子、安靜角落；詢問：「你想要__嗎？」（給具體選項）</span></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#CECBF6;color:#26215C">5</div>
+          <div class="flow-text"><strong>通報</strong><span>事後填寫觀察記錄，通知導師與家長，說明觸發原因及處理過程</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AS -->
+<div class="content" id="page-as">
+  <h2>亞斯伯格症（AS）：具體話術與SOP</h2>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#E1F5EE;color:#085041">情境一</div>
+      <h3>強烈堅持自己的「規則」，與同學起衝突（如：我的位置、公不公平）</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">SOP流程</h3>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">1</div>
+            <div class="step-content"><div class="step-title">不正面否定，先承認其感受</div><div class="step-detail">AS孩子強調公平原則，被否定會更激動</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">2</div>
+            <div class="step-content"><div class="step-title">給出「規則的理由」</div><div class="step-detail">AS孩子接受邏輯解釋，但不接受「因為我說了算」</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">3</div>
+            <div class="step-content"><div class="step-title">私下協商，給有限選擇</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">4</div>
+            <div class="step-content"><div class="step-title">若情緒升高，先暫停討論</div><div class="step-detail">「我們等一下再說，現在先各自休息。」</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">話術範例</h3>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 建議說法</div>
+            <div class="script-text">「我知道你覺得這樣不公平，你說的那個規則我聽到了。我來解釋一下為什麼今天這樣安排……」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 協商話術</div>
+            <div class="script-text">「今天先這樣，明天你可以選A或B，好嗎？」<em>（提供有限但真實的選擇）</em></div>
+          </div>
+          <div class="script-box script-bad">
+            <div class="script-label">✗ 避免說法</div>
+            <div class="script-text">「你太固執了！」「規定就是規定，不能說為什麼！」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#E1F5EE;color:#085041">情境二</div>
+      <h3>說話踩到別人地雷（不知道自己得罪人）</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">1</div>
+            <div class="step-content"><div class="step-title">事後私下引導，不當眾糾正</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">2</div>
+            <div class="step-content"><div class="step-title">用具體情境描述對方感受</div><div class="step-detail">AS孩子難以自動推測他人情緒，需要具體說明</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#9FE1CB;color:#04342C">3</div>
+            <div class="step-content"><div class="step-title">教替代句型（建立社交劇本）</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 引導話術（具體描述，不貼標籤）</div>
+            <div class="script-text">「你剛才說他的畫畫得不好看，他聽了臉色有點不開心。不是你的錯，但我想讓你知道，他聽了這句話覺得難過了。」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 教替代說法</div>
+            <div class="script-text">「下次如果你覺得一件事不好，可以說『我個人覺得…』或者不說，只說『嗯』就好。我們來練習看看。」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADHD -->
+<div class="content" id="page-adhd">
+  <h2>ADHD：具體話術與SOP</h2>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#FAEEDA;color:#633806">情境一</div>
+      <h3>無法專注寫作業，東摸西摸不停分心</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">SOP流程</h3>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">1</div>
+            <div class="step-content"><div class="step-title">清空桌面，只留當前作業</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">2</div>
+            <div class="step-content"><div class="step-title">分段任務：拆成10至15分鐘小段</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">3</div>
+            <div class="step-content"><div class="step-title">使用計時器讓孩子「看見時間」</div><div class="step-detail">「計時器響之前，先把這一題寫完。」</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">4</div>
+            <div class="step-content"><div class="step-title">段落完成立即給予正向回饋</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">5</div>
+            <div class="step-content"><div class="step-title">給合法的動態出口</div><div class="step-detail">「你可以幫老師把那些作業本發下去，然後回來繼續。」</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">話術範例</h3>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 任務拆分話術</div>
+            <div class="script-text">「先寫這一頁的上半部，寫完了告訴老師，我來看。」<em>（不說「全部寫完」）</em></div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 計時器話術</div>
+            <div class="script-text">「這個計時器設5分鐘，響之前你試試看能寫幾題？」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 完成後立即回饋</div>
+            <div class="script-text">「哇，你這5分鐘寫了3題！你自己知道嗎，你剛剛很專心！」</div>
+          </div>
+          <div class="script-box script-bad">
+            <div class="script-label">✗ 避免說法</div>
+            <div class="script-text">「你能不能專心一下？！」「你故意的對不對？」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#FAEEDA;color:#633806">情境二</div>
+      <h3>衝動行為：插嘴、搶東西、推撞同學</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">1</div>
+            <div class="step-content"><div class="step-title">第一次：非語言提示（手勢+眼神）</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">2</div>
+            <div class="step-content"><div class="step-title">事發當下：簡短且平靜地說明</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">3</div>
+            <div class="step-content"><div class="step-title">不長篇說教，等孩子平靜後再引導</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#FAC775;color:#412402">4</div>
+            <div class="step-content"><div class="step-title">事後教「停、想、說、做」策略</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="script-box script-neutral">
+            <div class="script-label">→ 當下介入（簡短）</div>
+            <div class="script-text">「○○，停。那是他的東西，請放回去。」<em>（不問為什麼，直接說行為要求）</em></div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 事後引導（平靜時）</div>
+            <div class="script-text">「剛才你拿他的橡皮擦，你知道他不開心了嗎？下次你想用，可以怎麼問他？我們來說說看。」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 教「停、想、說、做」</div>
+            <div class="script-text">「下次你很想做一件事的時候，先停一下，想想這樣好嗎，再說出來，最後才做。我們一起練習：如果你想用他的橡皮擦，你說什麼？」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EBD -->
+<div class="content" id="page-ebd">
+  <h2>情緒行為障礙（EBD）：具體話術與SOP</h2>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#FAECE7;color:#4A1B0C">情境一</div>
+      <h3>情緒突然爆發：大叫、摔東西、罵人</h3>
+    </div>
+    <div class="special-body">
+      <div class="sop-flow" style="margin-bottom:12px">
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">保</div>
+          <div class="flow-text"><strong>立刻確保全班安全</strong><span>請其他孩子繼續寫作業，不要圍觀；移除危險物品</span></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">穩</div>
+          <div class="flow-text">
+            <strong>老師自己先穩住（3秒深呼吸）</strong>
+            <div class="script-box script-good" style="margin-top:6px">
+              <div class="script-label">✓ 說最少的話</div>
+              <div class="script-text">「老師在這裡。」<em>（低聲，不說其他）</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">離</div>
+          <div class="flow-text"><strong>若孩子有物理安全需求：引導至緩和空間</strong><span>「你可以去那個角落坐一下，老師等你。」</span></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">報</div>
+          <div class="flow-text"><strong>若有攻擊行為：請求支援，通報輔導組</strong><span>課後班老師不需獨力處置肢體攻擊</span></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-dot" style="background:#F5C4B3;color:#4A1B0C">後</div>
+          <div class="flow-text"><strong>情緒穩定後（不立即）：引導反思</strong>
+            <div class="script-box script-good" style="margin-top:6px">
+              <div class="script-label">✓ 建議說法</div>
+              <div class="script-text">「你現在好一點了嗎？你願意告訴我剛才發生什麼事嗎？」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="danger">🚨 若孩子說出自傷相關言語：不要獨自評估，立即冷靜說「謝謝你告訴我，我很擔心你」，並立刻通知輔導老師。</div>
+    </div>
+  </div>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#FAECE7;color:#4A1B0C">情境二</div>
+      <h3>長期拒絕參與、封閉自己</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">1</div>
+            <div class="step-content"><div class="step-title">降低期待，先求「在場」</div><div class="step-detail">不強求寫作業，只要孩子在班上不引發衝突</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">2</div>
+            <div class="step-content"><div class="step-title">每天一次短暫的非正式連結</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">3</div>
+            <div class="step-content"><div class="step-title">從孩子的興趣切入</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#F5C4B3;color:#4A1B0C">4</div>
+            <div class="step-content"><div class="step-title">記錄並轉介輔導老師</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 非正式連結話術（不提作業）</div>
+            <div class="script-text">「你今天帶這個來嗎？這是什麼？」<em>（從孩子的物品或興趣切入）</em><br>「你喜歡這個嗎？你可以告訴我更多嗎？」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 邀請（不強迫）參與</div>
+            <div class="script-text">「這題不難，要不要試試看第一格？只有第一格就好。」</div>
+          </div>
+          <div class="info">📝 若孩子封閉超過一週且無法連結，填寫觀察記錄，請輔導老師介入。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LD -->
+<div class="content" id="page-ld">
+  <h2>學習障礙（LD）：具體話術與SOP</h2>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#E6F1FB;color:#042C53">情境一</div>
+      <h3>作業寫不出來：閱讀困難、書寫困難、計算困難</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">SOP流程（依困難類型）</h3>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">識</div>
+            <div class="step-content"><div class="step-title">先辨識是哪種困難</div><div class="step-detail">閱讀跳行？寫字太慢？抄不正確？計算步驟亂？</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">調</div>
+            <div class="step-content"><div class="step-title">調整輸入方式（老師念題目）</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">拆</div>
+            <div class="step-content"><div class="step-title">工作分析：拆成更小步驟</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">替</div>
+            <div class="step-content"><div class="step-title">提供替代方式完成</div><div class="step-detail">口頭回答→老師代為抄寫；電腦打字替代手寫</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">讚</div>
+            <div class="step-content"><div class="step-title">完成任何部分立即具體稱讚</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:8px">話術範例</h3>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 調整輸入（老師念題）</div>
+            <div class="script-text">「這題我念給你聽，你告訴我答案是什麼，老師幫你寫上去，好嗎？」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 拆步驟（數學）</div>
+            <div class="script-text">「我們先只做第一步：把這個數字寫在這裡。寫好了嗎？好，第二步……」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 重建信心（關鍵話術）</div>
+            <div class="script-text">「你用不一樣的方法在學習，這不是因為你不努力，是因為你的大腦需要不一樣的步驟，這樣很正常。」</div>
+          </div>
+          <div class="script-box script-bad">
+            <div class="script-label">✗ 避免說法</div>
+            <div class="script-text">「這麼簡單你都不會？」「你剛才有沒有認真？」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="special-section">
+    <div class="special-header">
+      <div class="special-badge" style="background:#E6F1FB;color:#042C53">情境二</div>
+      <h3>「習得無助」：我不會、我不想寫、反正我就是很笨</h3>
+    </div>
+    <div class="special-body">
+      <div class="two-col">
+        <div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">1</div>
+            <div class="step-content"><div class="step-title">不反駁、先同理</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">2</div>
+            <div class="step-content"><div class="step-title">找到孩子「能做到」的最小單位</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">3</div>
+            <div class="step-content"><div class="step-title">讓孩子「成功經驗」先發生</div></div>
+          </div>
+          <div class="sop-step">
+            <div class="step-num" style="background:#B5D4F4;color:#042C53">4</div>
+            <div class="step-content"><div class="step-title">用「今天的你」vs「上週的你」比較</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 同理話術</div>
+            <div class="script-text">「我知道，這個對你來說真的很難。你願意試試看一題就好嗎？就這一題。」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 重新框架（不比較別人）</div>
+            <div class="script-text">「你上週連第一步都不知道怎麼開始，今天你已經知道要先把數字寫在這裡了。這就是進步。」</div>
+          </div>
+          <div class="script-box script-good">
+            <div class="script-label">✓ 當孩子說「我很笨」</div>
+            <div class="script-text">「不是笨，是你的學習方法需要調整。老師陪你找方法，你負責努力試試看，好嗎？」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 危機通報SOP -->
+<div class="content" id="page-crisis">
+  <h2>危機事件通報SOP流程</h2>
+
+  <div class="sop-flow">
+    <h3>🔴 第一類：孩子出現自傷言語或行為</h3>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">1</div>
+      <div class="flow-text">
+        <strong>保持冷靜，立即回應（不要假裝沒聽到）</strong>
+        <div class="script-box script-good" style="margin-top:6px">
+          <div class="script-label">✓ 立即說法</div>
+          <div class="script-text">「謝謝你告訴我，我很擔心你，我們去找一個地方說說話。」</div>
+        </div>
+        <div class="script-box script-bad" style="margin-top:4px">
+          <div class="script-label">✗ 絕對不說</div>
+          <div class="script-text">「你只是說說的吧？」「不要想這些，快去寫作業。」</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">2</div>
+      <div class="flow-text"><strong>帶離現場，到安全空間</strong><span>避免在全班面前繼續對話</span></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">3</div>
+      <div class="flow-text"><strong>立即通知輔導老師</strong><span>課後班老師不進行風險評估，評估由輔導老師執行</span></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">4</div>
+      <div class="flow-text"><strong>由輔導老師通知家長</strong><span>課後班老師可協助告知事件背景，但不單獨致電家長</span></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#F09595;color:#501313">5</div>
+      <div class="flow-text"><strong>填寫事件記錄</strong><span>記錄時間、當時情境、孩子說的話、採取的行動</span></div>
+    </div>
+  </div>
+
+  <div class="sop-flow">
+    <h3>🟡 第二類：孩子疑似有身體傷害（疑似家暴）</h3>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#FAC775;color:#412402">1</div>
+      <div class="flow-text"><strong>觀察與記錄傷痕位置、描述</strong><span>不要詢問孩子「是不是被打」，避免二次傷害</span></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#FAC775;color:#412402">2</div>
+      <div class="flow-text">
+        <strong>若孩子主動說起：傾聽，不評斷</strong>
+        <div class="script-box script-good" style="margin-top:6px">
+          <div class="script-label">✓ 建議說法</div>
+          <div class="script-text">「謝謝你告訴我，你很勇敢。老師會幫你找可以保護你的大人。」</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#FAC775;color:#412402">3</div>
+      <div class="flow-text"><strong>立即通報輔導組或教務處</strong><span>依《兒童及少年福利與權益保障法》，知情者有通報義務，24小時內通報</span></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#FAC775;color:#412402">4</div>
+      <div class="flow-text"><strong>由學校依規定通報地方主管機關（113保護專線）</strong><span>課後班老師不直接致電，由學校統一通報</span></div>
+    </div>
+  </div>
+
+  <div class="sop-flow">
+    <h3>🟢 第三類：孩子受傷（跌倒、碰撞）</h3>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">1</div>
+      <div class="flow-text"><strong>評估傷勢</strong><span>輕微（擦傷）→ 校護處理 + 通知家長；嚴重（骨折、頭部撞擊、意識不清）→ 撥打119並立刻通知家長</span></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">2</div>
+      <div class="flow-text"><strong>通知導師與教務處</strong></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-dot" style="background:#9FE1CB;color:#04342C">3</div>
+      <div class="flow-text"><strong>填寫意外事件記錄表</strong><span>包括時間、地點、發生經過、處理方式、家長聯繫記錄</span></div>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-top:0">
+    📋 通報聯絡一覽：緊急醫療 119｜保護專線 113｜警察 110｜學校輔導組（依各校分機）<br>課後班老師的核心原則：察覺 → 記錄 → 通報 → 等待專業處理，不需獨力承擔。
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

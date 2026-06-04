@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>課後照顧班完整輔導手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-light: #4a4640;
+    --ink-faint: #8a8680;
+    --paper: #faf8f3;
+    --paper-warm: #f3f0e8;
+    --paper-mid: #ebe7dc;
+    --line: #d8d3c8;
+    --accent-gold: #b8860b;
+    --accent-gold-light: #f0d070;
+    --grade-low: #2d6a4f;
+    --grade-low-bg: #d8f3dc;
+    --grade-low-mid: #95d5a3;
+    --grade-mid: #1d4e89;
+    --grade-mid-bg: #dbeafe;
+    --grade-mid-mid: #93c5fd;
+    --grade-high: #7b2d8b;
+    --grade-high-bg: #ede9fe;
+    --grade-high-mid: #c4b5fd;
+    --asd: #b45309;
+    --asd-bg: #fef3c7;
+    --as: #065f46;
+    --as-bg: #d1fae5;
+    --adhd: #9f1239;
+    --adhd-bg: #ffe4e6;
+    --ebd: #1e40af;
+    --ebd-bg: #dbeafe;
+    --ld: #5b21b6;
+    --ld-bg: #ede9fe;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(255,255,255,0.03) 28px,
+      rgba(255,255,255,0.03) 29px
+    );
+  }
+  .hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent-gold-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent-gold-light); }
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(24px, 5vw, 38px);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(250,248,243,0.6);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+  .hero-tag {
+    font-size: 11px; padding: 4px 12px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* NAV */
+  .nav-wrap {
+    background: var(--ink);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav { display: flex; max-width: 900px; margin: 0 auto; overflow-x: auto; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-section {
+    display: flex; align-items: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+  .nav-section:last-child { border-right: none; }
+  .nav-label {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); padding: 0 14px; white-space: nowrap;
+    font-weight: 500;
+  }
+  .nav-btn {
+    padding: 15px 16px; font-size: 13px; font-weight: 500;
+    border: none; background: none; cursor: pointer;
+    color: rgba(255,255,255,0.5); white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s; font-family: 'Noto Sans TC', sans-serif;
+  }
+  .nav-btn:hover { color: rgba(255,255,255,0.85); }
+  .nav-btn.active { color: var(--accent-gold-light); border-bottom-color: var(--accent-gold-light); }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* PAGE HEADERS */
+  .page-header { margin-bottom: 2rem; }
+  .page-header .eyebrow {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 8px; font-weight: 500;
+  }
+  .page-header h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 26px; font-weight: 700; line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 14px; color: var(--ink-light); line-height: 1.8;
+    max-width: 620px;
+  }
+
+  /* GRADE TABS */
+  .grade-tabs { display: flex; gap: 0; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .grade-tab {
+    flex: 1; padding: 14px 12px; border: none; cursor: pointer;
+    font-size: 13px; font-weight: 600; font-family: 'Noto Sans TC', sans-serif;
+    background: var(--paper-warm); color: var(--ink-faint);
+    border-right: 1px solid var(--line); transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .grade-tab:last-child { border-right: none; }
+  .grade-tab.active-low { background: var(--grade-low); color: #fff; }
+  .grade-tab.active-mid { background: var(--grade-mid); color: #fff; }
+  .grade-tab.active-high { background: var(--grade-high); color: #fff; }
+  .grade-tab .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+
+  .grade-pane { display: none; }
+  .grade-pane.active { display: block; }
+
+  /* GRADE CARD HEADER */
+  .grade-intro {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 22px; border-radius: 12px; margin-bottom: 24px;
+  }
+  .grade-intro-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+  .grade-intro h3 { font-family: 'Noto Serif TC', serif; font-size: 19px; font-weight: 700; margin-bottom: 4px; }
+  .grade-intro .grade-sub { font-size: 13px; opacity: 0.75; line-height: 1.6; }
+  .grade-intro .grade-badge {
+    display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+    background: rgba(255,255,255,0.3); margin-bottom: 6px;
+  }
+
+  /* SECTIONS */
+  .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .section-card {
+    background: var(--paper-warm); border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .section-card.full { grid-column: 1/-1; }
+  .section-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 6px;
+  }
+  .section-title .icon { font-size: 14px; }
+
+  .item { display: flex; gap: 10px; margin-bottom: 10px; }
+  .item:last-child { margin-bottom: 0; }
+  .item-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--line);
+    flex-shrink: 0; margin-top: 7px;
+  }
+  .item-text { font-size: 13px; line-height: 1.7; color: var(--ink-light); }
+  .item-text strong { color: var(--ink); font-weight: 500; }
+
+  /* CALLOUT */
+  .callout {
+    padding: 12px 16px; border-radius: 8px; font-size: 13px;
+    line-height: 1.7; margin-top: 8px; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .callout-icon { font-size: 16px; flex-shrink: 0; }
+  .callout-warn { background: #fef9ee; border: 1px solid #e9c46a; color: #5c4000; }
+  .callout-info { background: #eef6ff; border: 1px solid #93c5fd; color: #1e3a5f; }
+  .callout-tip { background: #f0fdf4; border: 1px solid #86efac; color: #14532d; }
+
+  /* SPECIAL TABS */
+  .special-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .special-tab {
+    padding: 8px 18px; font-size: 13px; font-weight: 500; border-radius: 30px;
+    border: 1.5px solid var(--line); background: var(--paper-warm);
+    color: var(--ink-light); cursor: pointer; transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .special-tab:hover { border-color: var(--ink-light); color: var(--ink); }
+  .special-tab.active { border-color: transparent; color: #fff; }
+
+  .special-pane { display: none; }
+  .special-pane.active { display: block; }
+
+  /* SPECIAL HEADER STRIP */
+  .special-intro {
+    border-radius: 14px; padding: 22px 24px; margin-bottom: 24px;
+    display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start;
+  }
+  .special-intro h3 {
+    font-family: 'Noto Serif TC', serif; font-size: 20px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .special-intro .desc { font-size: 13px; line-height: 1.75; opacity: 0.8; }
+  .special-tag-badge {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px; background: rgba(255,255,255,0.25); white-space: nowrap;
+  }
+  .pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .pill {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    background: rgba(255,255,255,0.25); color: inherit;
+  }
+
+  /* THREE COL */
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+
+  /* STRATEGY BLOCK */
+  .strat-block {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px;
+  }
+  .strat-block h4 {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  .strat-item { font-size: 13px; line-height: 1.7; color: var(--ink-light); padding: 3px 0 3px 12px; border-left: 2px solid var(--line); margin-bottom: 5px; }
+  .strat-item:last-child { margin-bottom: 0; }
+  .strat-item strong { color: var(--ink); }
+
+  /* DO / DON'T */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .do-box, .dont-box {
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .do-box { background: #f0fdf4; border: 1px solid #86efac; }
+  .dont-box { background: #fff5f5; border: 1px solid #fca5a5; }
+  .do-box .box-label { font-size: 11px; font-weight: 600; color: #15803d; letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+  .dont-box .box-label { font-size: 11px; font-weight: 600; color: #b91c1c; letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+  .do-box .box-item, .dont-box .box-item { font-size: 12.5px; line-height: 1.65; color: var(--ink-light); margin-bottom: 4px; }
+
+  /* ALERT BOXES */
+  .alert { padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; margin-top: 16px; display: flex; gap: 10px; }
+  .alert-danger { background: #fff1f2; border: 1px solid #fca5a5; color: #7f1d1d; }
+  .alert-warn { background: #fffbeb; border: 1px solid #fcd34d; color: #78350f; }
+  .alert-blue { background: #eff6ff; border: 1px solid #93c5fd; color: #1e3a5f; }
+  .alert-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--line); margin: 24px 0; }
+
+  /* TIME TABLE */
+  .time-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  .time-table th {
+    background: var(--paper-mid); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+    padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--line);
+  }
+  .time-table td { font-size: 13px; padding: 9px 12px; border-bottom: 1px solid var(--line); color: var(--ink-light); vertical-align: top; line-height: 1.6; }
+  .time-table tr:last-child td { border-bottom: none; }
+  .time-table td:first-child { font-weight: 500; color: var(--ink); white-space: nowrap; }
+
+  /* PRINCIPLE LIST */
+  .principle { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .principle-num {
+    font-family: 'Noto Serif TC', serif; font-size: 20px; font-weight: 700;
+    color: var(--line); flex-shrink: 0; line-height: 1; width: 28px; text-align: right;
+  }
+  .principle-content h4 { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .principle-content p { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .section-grid { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+    .do-dont { grid-template-columns: 1fr; }
+    .special-intro { grid-template-columns: 1fr; }
+    .grade-tabs .tab-text { display: none; }
+  }
+
+  /* ANIMATIONS */
+  .page.active { animation: fadeUp 0.25s ease; }
+  .grade-pane.active { animation: fadeUp 0.2s ease; }
+  .special-pane.active { animation: fadeUp 0.2s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* FOOTER */
+  .footer-note {
+    text-align: center; font-size: 12px; color: var(--ink-faint);
+    padding: 32px 0 0; border-top: 1px solid var(--line); margin-top: 48px;
+  }
+
+  /* COLOR OVERRIDES FOR SPECIAL TYPES */
+  .type-asd .strat-item { border-left-color: var(--asd); }
+  .type-as .strat-item { border-left-color: var(--as); }
+  .type-adhd .strat-item { border-left-color: var(--adhd); }
+  .type-ebd .strat-item { border-left-color: var(--ebd); }
+  .type-ld .strat-item { border-left-color: var(--ld); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">教師實務指引</div>
+    <h1>國小課後照顧班<br>完整輔導手冊</h1>
+    <p class="hero-sub">涵蓋低、中、高三年段班級經營策略，及自閉症、亞斯伯格、ADHD、情緒行為障礙、學習障礙五類特殊生的融合班輔導方針。</p>
+    <div class="hero-tags">
+      <div class="hero-tag">低年級</div><div class="hero-tag">中年級</div><div class="hero-tag">高年級</div>
+      <div class="hero-tag">ASD</div><div class="hero-tag">亞斯伯格</div><div class="hero-tag">ADHD</div>
+      <div class="hero-tag">情緒行為障礙</div><div class="hero-tag">學習障礙</div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav">
+    <div class="nav-section">
+      <span class="nav-label">單元一</span>
+      <button class="nav-btn active" onclick="showPage('grade')">年段班級策略</button>
+    </div>
+    <div class="nav-section">
+      <span class="nav-label">單元二</span>
+      <button class="nav-btn" onclick="showPage('special')">特殊生融合輔導</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================== 年段策略 ========================== -->
+<div class="main">
+<div class="page active" id="page-grade">
+  <div class="page-header">
+    <div class="eyebrow">單元一 ・ 年段班級策略</div>
+    <h2>低・中・高年級細部輔導策略</h2>
+    <p>依據兒童發展階段差異，分別提供入班銜接、作業輔導、自由時間規劃與班級常規經營的具體策略，從建立安全感逐步走向自律。</p>
+  </div>
+
+  <div class="grade-tabs">
+    <button class="grade-tab active-low" id="gtab-low" onclick="switchGrade('low')">
+      <span class="dot"></span><span class="tab-text">低年級</span>
+      <span style="font-size:11px;opacity:.8">一、二年級</span>
+    </button>
+    <button class="grade-tab" id="gtab-mid" onclick="switchGrade('mid')">
+      <span class="dot"></span><span class="tab-text">中年級</span>
+      <span style="font-size:11px;opacity:.8">三、四年級</span>
+    </button>
+    <button class="grade-tab" id="gtab-high" onclick="switchGrade('high')">
+      <span class="dot"></span><span class="tab-text">高年級</span>
+      <span style="font-size:11px;opacity:.8">五、六年級</span>
+    </button>
+  </div>
+
+  <!-- LOW -->
+  <div class="grade-pane active" id="gpane-low">
+    <div class="grade-intro" style="background:var(--grade-low-bg);color:var(--grade-low);">
+      <div class="grade-intro-icon">🌱</div>
+      <div>
+        <div class="grade-badge">生活建立期</div>
+        <h3>低年級（一、二年級）</h3>
+        <p class="grade-sub">以安全感與常規建立為核心。這個階段的孩子剛適應學校生活，在課後班中最需要的是穩定、溫暖的環境，以及清楚且一致的日常結構。老師是最重要的安全基地。</p>
+      </div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🚪</span>入班銜接</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>固定入班儀式：</strong>放書包→洗手→坐定，每天一致，以降低環境轉換焦慮</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>開學親師確認：</strong>了解各生的常規習慣、飲食限制與情緒敏感點</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>視覺化作息表：</strong>貼於黑板，以圖文並用的方式說明今天的時間流程</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text">點心時間固定，讓孩子對「課後班的節奏」有明確預期</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">✏️</span>作業輔導</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>按難易度排序：</strong>先做注音描紅等低腦力作業，再做計算、造句</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>「一起做」模式：</strong>老師示範1題→學生跟做1題，不獨留孩子面對困難</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>小貼紙代幣制：</strong>完成1科給貼紙，累積5張換一個小獎勵</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text">不強迫在固定時間內全部完成；進度落後者隔天通知家長</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🎨</span>自由時間規劃</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>靜態選項為主：</strong>繪本角、積木、桌遊，避免追跑嬉鬧造成安全問題</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>每週故事時間：</strong>老師朗讀繪本，全班共同參與，建立課後班歸屬感</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text">戶外活動限制在規劃區域，老師全程陪同</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">📋</span>班級常規經營</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>共訂3條簡單班規：</strong>講話舉手、東西放好、互相尊重，用孩子的語言表達</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>衝突處理：</strong>先讓雙方冷靜，老師從旁引導說出感受，不評判對錯</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-low)"></div><div class="item-text"><strong>收班「今天的我」：</strong>每日最後2分鐘，讓孩子說一件開心或不開心的事</div></div>
+      </div>
+    </div>
+
+    <div class="section-card full" style="background:var(--paper-warm);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+      <div class="section-title"><span class="icon">⏰</span>作業時段建議流程</div>
+      <table class="time-table">
+        <tr><th>時段</th><th>建議活動</th><th>老師角色</th></tr>
+        <tr><td>入班後 5 分鐘</td><td>整理書包、準備作業本、靜心轉換</td><td>在門口迎接，引導入座</td></tr>
+        <tr><td>作業前段</td><td>先做簡單、低腦力作業（注音、描紅、著色）</td><td>全班巡視，確認每人都開始</td></tr>
+        <tr><td>作業中段</td><td>進入需思考的數學、造句等科目</td><td>巡視並坐下陪伴遇困難者</td></tr>
+        <tr><td>遇困難時</td><td>鼓勵打勾跳過，舉手提問</td><td>輔導為主，不直接給答案</td></tr>
+        <tr><td>作業完成後</td><td>繪本、積木、桌遊、戶外（固定區域）</td><td>自由時間監護，預備收班</td></tr>
+      </table>
+    </div>
+
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <div><strong>老師提醒：</strong>低年級在課後班時間最長，老師體力消耗大。務必預排靜態活動段落（如繪本時間），避免全程高強度互動造成過勞，才能維持穩定的照顧品質。</div>
+    </div>
+  </div>
+
+  <!-- MID -->
+  <div class="grade-pane" id="gpane-mid">
+    <div class="grade-intro" style="background:var(--grade-mid-bg);color:var(--grade-mid);">
+      <div class="grade-intro-icon">📚</div>
+      <div>
+        <div class="grade-badge">自主練習期</div>
+        <h3>中年級（三、四年級）</h3>
+        <p class="grade-sub">培養自我管理能力，從他律走向部分自律。這個階段的孩子開始有較強的同儕意識，老師要善用同儕力量促進合作學習，同時建立讓孩子參與制定的班規，提高認同感。</p>
+      </div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🚪</span>入班銜接</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>作業自行記錄：</strong>學生寫「作業記錄本」，老師巡視確認，培養自我管理</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>共訂班規：</strong>開學初與學生討論「我們的課後班公約」，孩子有參與感才更願意遵守</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>輪流班級小幫手：</strong>協助發放物品、維持秩序，培養責任感</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">✏️</span>作業輔導</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>教排序邏輯：</strong>明天考試的優先→量多的→需創作的最後</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>打勾跳過策略：</strong>不會的先打勾，全部寫完後再回頭，老師從旁協助</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>同儕互相確認：</strong>鼓勵同組同學互相確認答案（非抄襲），培養同儕學習</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text">每節課後5分鐘休息，前往固定點心區，不在座位飲食</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🎯</span>自由時間規劃</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>多元自主選擇：</strong>閱讀、繪畫、靜態桌遊、戶外跑動（需申請）</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>每月興趣分享：</strong>讓學生帶一樣自己喜歡的東西介紹，增進彼此了解</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>閱讀積點卡：</strong>記錄每月閱讀量，學期末小展覽，建立成就感</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🚦</span>班級常規經營</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>行為紅綠燈：</strong>綠燈（好表現）→黃燈（提醒）→紅燈（暫離冷靜區）</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>人際衝突引導：</strong>學生先自行溝通，老師引導而非裁判，建立自主解決能力</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-mid)"></div><div class="item-text"><strong>每週班會5分鐘：</strong>讓孩子提出課後班建議，強化參與感</div></div>
+      </div>
+    </div>
+
+    <div class="section-card full" style="background:var(--paper-warm);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+      <div class="section-title"><span class="icon">👥</span>同儕合作學習設計</div>
+      <div class="three-col">
+        <div class="strat-block">
+          <h4>小組組成原則</h4>
+          <div class="strat-item">每組3至4人，混合不同能力</div>
+          <div class="strat-item">每月輪換一次座位與小組</div>
+          <div class="strat-item">設小組長協助維持秩序</div>
+        </div>
+        <div class="strat-block">
+          <h4>合作任務設計</h4>
+          <div class="strat-item">互相確認數學算式步驟</div>
+          <div class="strat-item">一人朗讀、一人標記重點</div>
+          <div class="strat-item">共同討論作文構想</div>
+        </div>
+        <div class="strat-block">
+          <h4>衝突預防機制</h4>
+          <div class="strat-item">事先訂定「我們的組規」</div>
+          <div class="strat-item">不嘲笑組員的錯誤答案</div>
+          <div class="strat-item">有意見先說，再投票決定</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <div><strong>老師提醒：</strong>中年級同儕競爭意識增強，老師要多留意被排擠或孤立的孩子。若發現有系統性排擠，需立即介入並聯繫導師，不可等待觀望。</div>
+    </div>
+  </div>
+
+  <!-- HIGH -->
+  <div class="grade-pane" id="gpane-high">
+    <div class="grade-intro" style="background:var(--grade-high-bg);color:var(--grade-high);">
+      <div class="grade-intro-icon">🎓</div>
+      <div>
+        <div class="grade-badge">責任培養期</div>
+        <h3>高年級（五、六年級）</h3>
+        <p class="grade-sub">建立自律習慣，引導情緒管理與責任感。高年級孩子開始有強烈的自主意識與尊嚴感，老師需以平等、尊重的態度建立信任關係，才能有效引導。避免當眾糾正是最重要的原則。</p>
+      </div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🚪</span>入班銜接</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>今日計畫表：</strong>學生獨立填寫作業項目與預估完成時間，老師僅抽查確認</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>班級幹部制：</strong>由學生自選或輪流，責任感培養從真實的任務開始</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text">開學初說明課後班定位：尊重、自主學習、互相負責</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">✏️</span>作業輔導</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>作業自我核對：</strong>老師採「抽查」而非全面批閱，培養自我責任</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>鼓勵主動提問：</strong>避免老師過度解說剝奪思考機會</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>長期作業拆分：</strong>報告、作文每天完成一小段，協助建立進度感</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>教查找方法：</strong>遇不會的題目，教查字典或可信來源，而非直接給答案</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🎯</span>自由時間規劃</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>作業完成才可使用平板：</strong>限定閱讀、查資料類App，建立規則共識</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>討論角：</strong>允許低聲討論課業問題或讀書計畫，尊重高年級的學習自主</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text">每學期一次職涯分享：邀請不同職業家長介紹自己的工作</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">💬</span>班級常規經營</div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>以對話取代懲罰：</strong>違規後先私下溝通了解原因，再處理行為</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>「我訊息」練習：</strong>引導學生說「我覺得…因為…我希望…」，而非指責對方</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--grade-high)"></div><div class="item-text"><strong>情緒角落：</strong>放紙筆供書寫情緒，不強迫分享，給孩子私人出口</div></div>
+      </div>
+    </div>
+
+    <div class="do-dont" style="margin-bottom:16px;">
+      <div class="do-box">
+        <div class="box-label">✓ 與高年級孩子互動的關鍵做對</div>
+        <div class="box-item">・ 私下溝通，保護尊嚴</div>
+        <div class="box-item">・ 先理解再要求</div>
+        <div class="box-item">・ 說話如同對待一個人，而非對待小孩</div>
+        <div class="box-item">・ 讓孩子有真正的選擇和責任</div>
+        <div class="box-item">・ 承認孩子的觀點，即使你不同意</div>
+      </div>
+      <div class="dont-box">
+        <div class="box-label">✗ 容易破壞關係的做法</div>
+        <div class="box-item">・ 當眾糾正或比較</div>
+        <div class="box-item">・ 用情緒化語言攻擊人格</div>
+        <div class="box-item">・ 忽視孩子的感受直接說教</div>
+        <div class="box-item">・ 過度管控每個細節</div>
+        <div class="box-item">・ 把青春期情緒當作故意頂嘴</div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">💡</span>
+      <div><strong>高年級特別提醒：</strong>青春期開始萌芽，情緒敏感且在意同儕眼光。老師要以「建立信任」為第一目標，再處理行為問題。信任一旦建立，很多問題不需要處理就自然消失了。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================== 特殊生輔導 ========================== -->
+<div class="page" id="page-special">
+  <div class="page-header">
+    <div class="eyebrow">單元二 ・ 特殊生融合輔導</div>
+    <h2>五類特殊生個別化班級輔導策略</h2>
+    <p>近九成身心障礙生就讀普通班，課後照顧班同樣面對普特融合的現實。本單元針對五類常見特殊生，提供環境調整、作業輔導、同儕互動與危機因應的具體策略。</p>
+  </div>
+
+  <div class="special-tabs">
+    <button class="special-tab active" id="stab-asd" onclick="switchSpecial('asd')" style="background:var(--asd);border-color:var(--asd);color:#fff;">
+      自閉症（ASD）
+    </button>
+    <button class="special-tab" id="stab-as" onclick="switchSpecial('as')">亞斯伯格（AS）</button>
+    <button class="special-tab" id="stab-adhd" onclick="switchSpecial('adhd')">ADHD</button>
+    <button class="special-tab" id="stab-ebd" onclick="switchSpecial('ebd')">情緒行為障礙</button>
+    <button class="special-tab" id="stab-ld" onclick="switchSpecial('ld')">學習障礙</button>
+  </div>
+
+  <!-- ASD -->
+  <div class="special-pane active type-asd" id="spane-asd">
+    <div class="special-intro" style="background:var(--asd-bg);color:var(--asd);">
+      <div>
+        <div class="special-tag-badge">ASD・自閉症類群障礙</div>
+        <h3>自閉症（Autism Spectrum Disorder）</h3>
+        <p class="desc">社交溝通困難、感官敏感、固著行為為主要特徵，個別差異極大。課後班環境的多人、噪音、非結構化時間，對ASD孩子是高挑戰情境，需要高度環境支持。</p>
+        <div class="pill-list">
+          <span class="pill">視覺提示</span><span class="pill">結構化時程</span><span class="pill">預告變化</span><span class="pill">感官調整</span><span class="pill">固定位置</span>
+        </div>
+      </div>
+      <div class="special-tag-badge">需高度環境支持</div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🏠</span>環境與座位調整</div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>固定座位原則：</strong>靠近老師、遠離走道與噪音來源、刺激物少的角落</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>個人置物空間：</strong>明確標示，協助維持固定擺放方式，減少尋物焦慮</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>感官輔具備用：</strong>耳塞或降噪耳機（聽覺敏感）、壓力背心（觸覺需求）</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text">班上燈光若過亮，可允許戴帽子或調整至稍暗區域</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">📅</span>作息與常規</div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>視覺化流程表：</strong>圖文並用，每天貼於固定位置，孩子可自行核對進度</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>變動預告原則：</strong>任何流程改變，必須提前5至10分鐘告知，說明原因</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>任務清單卡：</strong>個人化作業清單，完成一項打勾一項，提供視覺完成感</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text">固著話題出現時：短暫回應後轉移「好，我們繼續寫作業」</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🗣️</span>指令給予方式</div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>具體、直接、分步驟：</strong>「請把國語作業放桌上，翻開第幾頁，寫第幾到第幾題」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>避免模糊表達：</strong>不說「你知道要做什麼嗎？」「你應該知道怎麼做吧？」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>必要時重複：</strong>可重複關鍵字，不加額外資訊，讓孩子有時間處理</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text">避免反問句與反諷：字面解讀是ASD孩子的常見模式</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">👫</span>同儕互動支持</div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>固定小幫手：</strong>安排固定（非隨機）同學協助，避免人際不確定性引發焦慮</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text"><strong>不強迫社交：</strong>讓接觸自然發生；鼓勵一般生了解差異，建立包容氛圍</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--asd)"></div><div class="item-text">衝突發生時：老師先介入讓當事人各自冷靜，再說明狀況</div></div>
+      </div>
+    </div>
+
+    <div class="section-card full" style="background:var(--paper-warm);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px;">
+      <div class="section-title"><span class="icon">🔴</span>情緒崩潰（Meltdown）因應</div>
+      <div class="three-col">
+        <div class="strat-block type-asd">
+          <h4>第一步：降低刺激</h4>
+          <div class="strat-item"><strong>不強制約束</strong>，先移除觸發來源</div>
+          <div class="strat-item">疏散周圍同學，降低噪音與人流</div>
+          <div class="strat-item">引導至事先準備的安靜空間</div>
+        </div>
+        <div class="strat-block type-asd">
+          <h4>第二步：陪伴等待</h4>
+          <div class="strat-item">老師在場但<strong>不強迫互動</strong></div>
+          <div class="strat-item">低聲重複：「老師在這裡，你是安全的。」</div>
+          <div class="strat-item">ASD Meltdown通常5至20分鐘自然消退</div>
+        </div>
+        <div class="strat-block type-asd">
+          <h4>第三步：緩降後</h4>
+          <div class="strat-item">提供感官調節工具（壓力球、毯子）</div>
+          <div class="strat-item">給具體選擇：「你想要___嗎？」</div>
+          <div class="strat-item">事後填寫記錄，通知導師與家長</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">🚨</span>
+      <div>Meltdown 期間絕對不要強行約束、在全班面前責罵，或要求孩子「立刻冷靜」。這會使情緒更強烈，且可能造成孩子身體上的不適。讓時間過去，是最有效的方式。</div>
+    </div>
+  </div>
+
+  <!-- AS -->
+  <div class="special-pane type-as" id="spane-as">
+    <div class="special-intro" style="background:var(--as-bg);color:var(--as);">
+      <div>
+        <div class="special-tag-badge">AS・亞斯伯格症</div>
+        <h3>亞斯伯格症（Asperger Syndrome）</h3>
+        <p class="desc">智力正常或偏高，語言發展不遲緩，但社交情境理解困難、堅持規則與公平、對改變敏感。在課後班中，最容易因「不公平」或「規則被打破」而起衝突，需要建立一致且有解釋的環境。</p>
+        <div class="pill-list">
+          <span class="pill">先建立關係</span><span class="pill">說明規則邏輯</span><span class="pill">保持一致</span><span class="pill">社交劇本</span>
+        </div>
+      </div>
+      <div class="special-tag-badge">需關係建立優先</div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🤝</span>關係建立策略</div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>從興趣切入：</strong>找出孩子的固著興趣，以此為對話切入點建立連結</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>先建立信任再要求改變：</strong>關係未建立前，要求改變只會引發對抗</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>說話直接、具體：</strong>避免暗示、反諷、模糊表達；亞斯孩子習慣字面解讀</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text">不評價其興趣的「奇特」，表現真誠的好奇心</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">⚖️</span>規則與一致性</div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>清楚說明規則：</strong>班規要具體，並說明每條規則的「為什麼」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>保持一致：</strong>老師對全班的標準需一致，否則亞斯孩子會強烈反應「不公平」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>例外情況提前說明：</strong>若有特例，必須事先解釋原因，才能降低抗拒</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text">臨時變動務必提早告知，給予心理準備時間</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🌐</span>社交情境引導</div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>事後引導：</strong>踩到別人地雷後，私下說明對方的感受（用具體情境描述）</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>建立社交劇本：</strong>「當別人不想聽我說話時，我可以…」的標準應對句型</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>角色扮演練習：</strong>在平靜時預演社交情境，建立應對能力</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text">犯錯時：先確認孩子是否真的理解錯誤，而非直接批評</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">💢</span>衝突因應</div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>不正面否定：</strong>先承認其感受與立場，再提出不同觀點</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>給出邏輯理由：</strong>亞斯孩子接受邏輯解釋，但不接受「因為我說了算」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text"><strong>私下協商：</strong>給有限但真實的選擇，如「今天先這樣，明天你可以選A或B」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--as)"></div><div class="item-text">若情緒升高：暫停討論，等孩子冷靜後再繼續</div></div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">💡</span>
+      <div><strong>正義感的力量：</strong>亞斯孩子通常有高度正義感，這是優點也是挑戰。老師應保持全班一致的標準，若有特例（如對特殊生給予不同對待）需事先對全班說明「差異化對待」的意義，讓亞斯孩子理解這不是偏心。</div>
+    </div>
+  </div>
+
+  <!-- ADHD -->
+  <div class="special-pane type-adhd" id="spane-adhd">
+    <div class="special-intro" style="background:var(--adhd-bg);color:var(--adhd);">
+      <div>
+        <div class="special-tag-badge">ADHD・注意力不足過動症</div>
+        <h3>注意力不足過動症（ADHD）</h3>
+        <p class="desc">注意力不集中、衝動控制困難，或合併過動。課後班的長時間靜態作業環境，對ADHD孩子尤其困難。關鍵在於「環境調整 + 任務拆分 + 即時回饋」三者並用，而非依賴孩子的意志力。</p>
+        <div class="pill-list">
+          <span class="pill">分段任務</span><span class="pill">計時器</span><span class="pill">即時回饋</span><span class="pill">動靜交替</span><span class="pill">代幣制度</span>
+        </div>
+      </div>
+      <div class="special-tag-badge">需結構化支持</div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🏠</span>環境與座位調整</div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>座位靠近老師：</strong>方便老師輕觸肩膀給予非語言提示，同時遠離分心來源</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>桌面淨空：</strong>只放當下需用的作業，其餘收入書包，減少視覺分心</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>顏色資料夾：</strong>不同顏色區分各科作業，減少「找作業」的時間消耗</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text">允許使用站立姿勢寫作業或坐球椅（若校方允許）</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">⏱️</span>作業拆分策略</div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>分段原則：</strong>30分鐘拆成兩個15分鐘，中間安排2至3分鐘合法動一動</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>計時器策略：</strong>讓孩子「看見時間」，設定短目標：「5分鐘內完成這一題」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>先說後做：</strong>請孩子說出「我要先做什麼」，讓執行前有一個停頓</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text">給小任務（發作業本、幫老師拿東西）幫助轉移過剩精力</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🎯</span>行為支持與獎勵</div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>即時回饋：</strong>完成一小段即給正向回饋，不等到全部完成才稱讚</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>代幣制度：</strong>每2至3週更換獎勵選項，避免習慣化失去激勵效果</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>孩子自選獎勵：</strong>提供多個選項讓學生選擇，增加主動參與感</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text">活動轉換前預告，並再次說明即將適用的規則</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">⚡</span>衝動行為處理</div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>第一次：非語言提示：</strong>眼神接觸 + 手勢，不打斷全班</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>停想說做四步驟：</strong>教孩子在衝動前「停一下、想想、說出來、再做」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text"><strong>藥物觀察：</strong>了解孩子是否服藥，觀察下午藥效退散後的行為變化</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--adhd)"></div><div class="item-text">行為問題聯繫導師與家長，確認學校與課後班策略一致</div></div>
+      </div>
+    </div>
+
+    <div class="alert alert-warn">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>重要認知：</strong>ADHD孩子的外顯行為常被誤判為故意搗蛋或態度問題。老師需向班上其他孩子適度說明「每個人的大腦運作方式不同」，避免集體排斥。同時，切勿在全班面前反覆提醒或糾正ADHD孩子，這會強化負面標籤。</div>
+    </div>
+  </div>
+
+  <!-- EBD -->
+  <div class="special-pane type-ebd" id="spane-ebd">
+    <div class="special-intro" style="background:var(--ebd-bg);color:var(--ebd);">
+      <div>
+        <div class="special-tag-badge">EBD・情緒行為障礙</div>
+        <h3>情緒行為障礙（Emotional Behavioral Disorder）</h3>
+        <p class="desc">長期情緒或行為表現顯著異常，可能包含焦慮、憂鬱、對立反抗、攻擊等，在校適應有顯著困難。課後班老師的核心任務是「建立關係、提前預防、危機時通報」，而非獨力處置。</p>
+        <div class="pill-list">
+          <span class="pill">情緒辨識</span><span class="pill">去標籤化</span><span class="pill">三方合作</span><span class="pill">危機通報</span>
+        </div>
+      </div>
+      <div class="special-tag-badge">需專業資源連結</div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🧭</span>日常預防策略</div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>了解觸發點：</strong>記錄孩子的情緒觸發情境（疲累、被批評、特定同學），主動調整</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>情緒角落設立：</strong>提供紙筆、壓力球，讓孩子有合法的情緒出口</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>平時建立連結：</strong>在情緒平穩時主動互動，不只在問題出現時才接近孩子</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text">預先與導師、輔導老師確認統一的應對策略</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🌡️</span>情緒上升時</div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>辨識早期訊號：</strong>臉色改變、動作急促、說話方式改變是情緒上升的前兆</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>低調靠近：</strong>不當眾介入，輕聲在旁提供支持或給予緩衝空間</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>降低外在要求：</strong>情緒上升時暫時不要求作業，先穩定情緒</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text">提供合法出口：「你可以去喝水」「你可以在情緒角落坐一下」</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🔥</span>情緒爆發時</div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>保持冷靜：</strong>降低音量、放慢語速、肢體開放（不交叉手臂）</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>帶離現場：</strong>避免在全班面前處理，先讓孩子離開刺激環境</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>不在激動時說教：</strong>等情緒穩定後（至少30分鐘）再進行引導</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>有攻擊行為：立即通報輔導組，</strong>課後班老師不需獨力處置</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">📝</span>作業輔導彈性</div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>拒寫時不強制：</strong>先了解原因（學業挫敗感、家中發生事情）</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>給予彈性：</strong>「今天只完成一科也沒關係，明天我們繼續」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text"><strong>立即正向回饋：</strong>完成任何部分立即給予鼓勵，強調努力而非結果</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ebd)"></div><div class="item-text">記錄觀察並定期與導師、輔導老師三方交流</div></div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">🚨</span>
+      <div><strong>自傷言語警示：</strong>若孩子出現「不想活」「想消失」等相關言語，不要輕忽，也不要獨自評估。請立即冷靜地說「謝謝你告訴我，我很擔心你」，並立即通知輔導老師。課後班老師的角色是「第一個察覺並通報的人」，而非治療師。</div>
+    </div>
+  </div>
+
+  <!-- LD -->
+  <div class="special-pane type-ld" id="spane-ld">
+    <div class="special-intro" style="background:var(--ld-bg);color:var(--ld);">
+      <div>
+        <div class="special-tag-badge">LD・學習障礙</div>
+        <h3>學習障礙（Learning Disability）</h3>
+        <p class="desc">智力正常，但在閱讀、書寫或數學等特定學習領域有顯著困難，常伴隨低自信與「習得無助感」。外表與一般孩子無異，容易被誤認為不認真或懶惰，需要老師主動說明並建立包容氛圍。</p>
+        <div class="pill-list">
+          <span class="pill">多感官教學</span><span class="pill">工作分析</span><span class="pill">替代方式</span><span class="pill">正向歸因</span>
+        </div>
+      </div>
+      <div class="special-tag-badge">需調整學習方式</div>
+    </div>
+
+    <div class="section-grid">
+      <div class="section-card">
+        <div class="section-title"><span class="icon">📖</span>閱讀困難因應</div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>老師朗讀題目：</strong>減少解碼負擔，讓孩子專注於理解內容</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>遮字卡輔助：</strong>協助不跳行的閱讀問題，一行一行追蹤</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>螢光筆標記：</strong>先畫出關鍵字再作答，降低工作記憶負擔</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text">音節拍手法：困難字詞以拍手方式分音節讀出</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">✍️</span>書寫困難因應</div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>口頭回答代替書寫：</strong>允許孩子口述答案，老師協助抄寫或打字</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>圖示代替文字：</strong>能用畫圖或圖表表達的，允許非文字形式</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>格線紙輔助：</strong>提供有格線的紙張協助字體排列與大小控制</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text">允許筆跡稍亂，以完整表達想法為優先</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">🔢</span>數學困難因應</div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>工作分析法：</strong>拆成細步驟，每步驟確認後再繼續，不一次說完所有步驟</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>計算輔具：</strong>提供計算機或數線，讓孩子聚焦在理解步驟，而非計算本身</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>顏色分位：</strong>個位用紅色、十位用藍色標示，幫助對位計算</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text">多感官操作：用積木或算珠實體操作，再對應到數字</div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title"><span class="icon">💛</span>習得無助感的重建</div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>找最小成功單位：</strong>找到孩子「能做到」的任何事情，從那裡開始建立信心</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>與「過去的自己」比較：</strong>「你上週這題需要老師示範，今天你自己完成了！」</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text"><strong>給予非學業成就感：</strong>班級小任務（點名、發本子），讓孩子在非學業面有貢獻</div></div>
+        <div class="item"><div class="item-dot" style="background:var(--ld)"></div><div class="item-text">明確告訴孩子：「你需要的是不一樣的方法，不是你不聰明」</div></div>
+      </div>
+    </div>
+
+    <div class="section-card full" style="background:var(--paper-warm);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px;">
+      <div class="section-title"><span class="icon">👥</span>班級氛圍建立：讓學障生不被誤解</div>
+      <div class="three-col">
+        <div class="strat-block type-ld">
+          <h4>對全班的說明</h4>
+          <div class="strat-item">「每個人學習方法不同，這很正常」</div>
+          <div class="strat-item">不標示誰是學障生，用普遍說法</div>
+          <div class="strat-item">舉例不同人的不同強項</div>
+        </div>
+        <div class="strat-block type-ld">
+          <h4>避免無意間傷害</h4>
+          <div class="strat-item">不點名讓孩子在全班面前朗讀長篇</div>
+          <div class="strat-item">不公開比較作業完成速度</div>
+          <div class="strat-item">不在全班面前說「這麼簡單」</div>
+        </div>
+        <div class="strat-block type-ld">
+          <h4>積極氛圍建設</h4>
+          <div class="strat-item">讓學障生有機會展現其他強項</div>
+          <div class="strat-item">稱讚全班「互相幫忙」的行為</div>
+          <div class="strat-item">建立「差異是資源」的班級文化</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <span class="callout-icon">✅</span>
+      <div><strong>核心提醒：</strong>學習障礙孩子的困難是神經層面的差異，而非態度問題。老師調整方法的目的是「讓孩子用自己的方式展示能力」，不是降低標準。找到適合的方法，學障孩子同樣可以達到良好的學習效果。</div>
+    </div>
+  </div>
+
+  <!-- SHARED PRINCIPLES -->
+  <div class="divider"></div>
+  <h3 style="font-family:'Noto Serif TC',serif;font-size:18px;margin-bottom:20px;">五類特殊生共同輔導原則</h3>
+  <div class="section-grid">
+    <div class="section-card full">
+      <div class="three-col">
+        <div>
+          <div class="principle"><div class="principle-num">01</div><div class="principle-content"><h4>先建立關係，再要求改變</h4><p>任何有效的輔導都建立在信任關係上。孩子感受到被接納，才會願意配合。</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div class="principle-content"><h4>以具體正向語言取代責罵</h4><p>描述你看到的行為與期待，而非評價孩子的人格。「請坐好」優於「你怎麼又在鬧」。</p></div></div>
+        </div>
+        <div>
+          <div class="principle"><div class="principle-num">03</div><div class="principle-content"><h4>永遠不當眾糾正</h4><p>特殊生的自尊往往更脆弱。當眾糾正會破壞信任、強化負面標籤，並引發更多行為問題。</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div class="principle-content"><h4>課後班老師不孤軍奮戰</h4><p>遇到危機，立即聯繫輔導組與特教組。專業分工才能讓孩子得到最好的支持。</p></div></div>
+        </div>
+        <div>
+          <div class="principle"><div class="principle-num">05</div><div class="principle-content"><h4>記錄是最好的溝通工具</h4><p>每次重要事件都要填寫觀察記錄，這是與導師、家長、輔導老師溝通的基礎，也是保護自己的方式。</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div class="principle-content"><h4>差異化對待不等於不公平</h4><p>主動向全班說明「每個人需要不同的幫助」，讓同學理解，避免「老師偏心」的誤解。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">
+  國小課後照顧班完整輔導手冊 ・ 整合特殊教育學術文獻與現場實務策略<br>
+  <span style="margin-top:6px;display:block;">供課後照顧班教師參考使用，具體策略請依個別學生狀況調整，並與特教組保持溝通協作</span>
+</div>
+
+</div><!-- end main -->
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchGrade(g) {
+    document.querySelectorAll('.grade-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.grade-tab').forEach(b => {
+      b.classList.remove('active-low','active-mid','active-high');
+      b.style.color = '';
+    });
+    document.getElementById('gpane-' + g).classList.add('active');
+    const btn = document.getElementById('gtab-' + g);
+    btn.classList.add('active-' + g);
+  }
+
+  function switchSpecial(s) {
+    document.querySelectorAll('.special-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.special-tab').forEach(b => {
+      b.classList.remove('active');
+      b.style.background = '';
+      b.style.borderColor = '';
+      b.style.color = '';
+    });
+    document.getElementById('spane-' + s).classList.add('active');
+    const btn = document.getElementById('stab-' + s);
+    btn.classList.add('active');
+    const colors = { asd: 'var(--asd)', as: 'var(--as)', adhd: 'var(--adhd)', ebd: 'var(--ebd)', ld: 'var(--ld)' };
+    btn.style.background = colors[s];
+    btn.style.borderColor = colors[s];
+    btn.style.color = '#fff';
+  }
+</script>
+</body>
+</html>
