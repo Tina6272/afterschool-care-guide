@@ -5,31 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>課後照顧班輔導資源</title>
 <style>
-  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; background: #f8f7f4; color: #2c2c2a; margin: 0; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
-  h1 { font-size: 24px; margin-bottom: 8px; }
-  p { color: #5f5e5a; margin-bottom: 2rem; font-size: 14px; }
-  .cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-  .card { background: #fff; border: 1px solid #e0ded8; border-radius: 16px; padding: 2rem; width: 280px; text-decoration: none; color: inherit; transition: all 0.2s; }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
-  .card .icon { font-size: 40px; margin-bottom: 12px; }
-  .card h2 { font-size: 18px; margin: 0 0 8px; }
-  .card p { font-size: 13px; color: #888780; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; background: #f8f7f4; color: #2c2c2a; margin: 0; padding: 0; }
+  .hero { background: #2c2c2a; color: #f8f7f4; padding: 2.5rem 2rem; text-align: center; }
+  .hero h1 { font-size: 24px; margin: 0 0 10px; }
+  .hero p { font-size: 14px; color: #b4b2a9; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+  .intro { margin-bottom: 2rem; }
+  .intro h2 { font-size: 18px; font-weight: 500; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e0ded8; }
+  .intro p { font-size: 14px; color: #5f5e5a; line-height: 1.7; }
+  .toc { margin-bottom: 2rem; }
+  .toc h2 { font-size: 18px; font-weight: 500; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e0ded8; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #fff; border: 1px solid #e0ded8; border-radius: 10px; margin-bottom: 10px; text-decoration: none; color: inherit; transition: all 0.15s; }
+  .toc-item:hover { background: #f0faf6; border-color: #1D9E75; }
+  .toc-icon { font-size: 24px; }
+  .toc-text h3 { font-size: 15px; font-weight: 500; margin: 0 0 2px; }
+  .toc-text p { font-size: 13px; color: #888780; margin: 0; }
+  .footer { text-align: center; padding: 2rem; border-top: 1px solid #e0ded8; font-size: 13px; color: #888780; }
+  .footer strong { color: #2c2c2a; }
 </style>
 </head>
 <body>
-  <h1>📚 國小課後照顧班輔導資源</h1>
-  <p>選取下方資源開啟</p>
-  <div class="cards">
-    <a class="card" href="afterschool_guide_handbook.html">
-      <div class="icon">📖</div>
-      <h2>完整輔導手冊</h2>
-      <p>低中高年段班級策略 + 五類特殊生融合輔導</p>
-    </a>
-    <a class="card" href="afterschool_sop_scripts.html">
-      <div class="icon">💬</div>
-      <h2>話術與SOP手冊</h2>
-      <p>具體話術範例、情緒爆發SOP、危機通報流程</p>
-    </a>
+  <div class="hero">
+    <h1>📚 國小課後照顧班輔導資源</h1>
+    <p>本專案旨在提供課後照顧班教師一份完整的教學與危機應對指引，內容涵蓋班級經營策略與特殊需求學生的融合輔導方針。</p>
+  </div>
+  <div class="container">
+    <div class="intro">
+      <h2>關於本專案</h2>
+      <p>課後照顧班教師每日面對不同年段、不同特質的學生，需要一套系統性的輔導策略。本手冊整合特殊教育學術文獻與現場實務經驗，從年段班級經營到五類特殊生（自閉症、亞斯伯格、ADHD、情緒行為障礙、學習障礙）的融合輔導，提供具體可行的策略與話術範例。</p>
+    </div>
+    <div class="toc">
+      <h2>📖 目錄</h2>
+      <a class="toc-item" href="afterschool_guide_handbook.html">
+        <div class="toc-icon">📖</div>
+        <div class="toc-text">
+          <h3>完整輔導手冊</h3>
+          <p>年段班級輔導策略 + 特殊生融合輔導方針</p>
+        </div>
+      </a>
+      <a class="toc-item" href="afterschool_sop_scripts.html">
+        <div class="toc-icon">💬</div>
+        <div class="toc-text">
+          <h3>話術與SOP手冊</h3>
+          <p>常見情境與應對話術 + 危機處理 SOP</p>
+        </div>
+      </a>
+    </div>
+    <div class="footer">
+      <strong>整理者：</strong>董緒琴老師與 AI 協作
+    </div>
   </div>
 </body>
 </html>
